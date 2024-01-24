@@ -23,8 +23,6 @@ public class SecondActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
         TextView textView = findViewById(R.id.textView);
         String value = getIntent().getStringExtra("name");
         textView.setText(value);
