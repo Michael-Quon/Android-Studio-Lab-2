@@ -2,11 +2,8 @@ package michael.quon.n01565129;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -29,6 +26,22 @@ public class SecondActivity extends AppCompatActivity {
 
         // Snackbar action to go back to the FirstActivity
         View parentLayout = findViewById(android.R.id.content);
+        Snackbar snackbar = Snackbar.make(parentLayout, "Back to Main Screen", Snackbar.LENGTH_INDEFINITE)
+                .setAction("BACK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(SecondActivity.this, FirstActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light));
+        snackbar.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Handle back press and show Snackbar
+        View parentLayout = findViewById(android.R.id.content);
         Snackbar.make(parentLayout, "Back to Main Screen", Snackbar.LENGTH_LONG)
                 .setAction("BACK", new View.OnClickListener() {
                     @Override
@@ -37,18 +50,8 @@ public class SecondActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 })
-                .setDuration(20000)
                 .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
                 .show();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==android.R.id.home){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-
     }
 
 }
