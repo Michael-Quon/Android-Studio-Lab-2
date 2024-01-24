@@ -1,12 +1,13 @@
 package michael.quon.n01565129;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -15,19 +16,44 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button submitbtn;
-        // initalizes button by finding it in the layout file
-        submitbtn =(Button)findViewById(R.id.submitbtn);
-        // creates the interaction of the button to be pressed
+        showSnackbar("Close App", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              finishAffinity();
+            }
+        });
+
+        TextView viewText = findViewById(R.id.textView);
+        String displayedText = viewText.getText().toString();
+
+        Button submitbtn = findViewById(R.id.submitbtn);
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            // displays a toast with the text Michael Quon
-                Toast.makeText(FirstActivity.this, "Michael Quon", Toast.LENGTH_LONG).show();
-                // switches to the SecondActivity, the second screen
-                Intent it= new Intent(FirstActivity.this, SecondActivity.class);
-                startActivity(it);
+                // Switch to the SecondActivity
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+
+                intent.putExtra("name", displayedText);
+
+                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Intercept the back press event and show Snackbar
+        showSnackbar("Close", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishAffinity(); // Close the application
+            }
+        });
+    }
+
+    private void showSnackbar(String actionText, View.OnClickListener clickListener) {
+        // Display a Snackbar with the specified action
+        Snackbar.make(findViewById(android.R.id.content), actionText, Snackbar.LENGTH_LONG)
+                .setAction("Close", clickListener).show();
     }
 }
