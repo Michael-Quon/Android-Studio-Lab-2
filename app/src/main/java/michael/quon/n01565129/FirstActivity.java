@@ -17,13 +17,6 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showSnackbar("Close App", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              finishAffinity();
-            }
-        });
-
         TextView viewText = findViewById(R.id.textView);
         String displayedText = viewText.getText().toString();
 
@@ -46,7 +39,7 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Intercept the back press event and show Snackbar
-        showSnackbar("Close", new View.OnClickListener() {
+        showSnackbar("Close App", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finishAffinity(); // Close the application

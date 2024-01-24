@@ -25,17 +25,6 @@ public class SecondActivity extends AppCompatActivity {
         textView.setText(value);
 
         // Snackbar action to go back to the FirstActivity
-        View parentLayout = findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar.make(parentLayout, "Back to Main Screen", Snackbar.LENGTH_INDEFINITE)
-                .setAction("BACK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(SecondActivity.this, FirstActivity.class);
-                        startActivity(intent);
-                    }
-                })
-                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light));
-        snackbar.show();
     }
 
     @Override
