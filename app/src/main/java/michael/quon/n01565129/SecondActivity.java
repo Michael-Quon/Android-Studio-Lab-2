@@ -31,14 +31,18 @@ public class SecondActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Handle back press and show Snackbar
         View parentLayout = findViewById(android.R.id.content);
-        Snackbar.make(parentLayout, "Back to Main Screen", Snackbar.LENGTH_LONG)
-                .setAction("BACK", new View.OnClickListener() {
+        String message = getString(R.string.back_to_main_screen);
+        String actionText = getString(R.string.back);
+        Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG)
+
+                .setAction(actionText, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(SecondActivity.this, FirstActivity.class);
                         startActivity(intent);
                     }
                 })
+                .setDuration(20000)
                 .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
                 .show();
     }

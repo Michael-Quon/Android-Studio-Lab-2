@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">Michael Quon</string>
     <string name="submit">Soumettre</string>
+    <string name="back_to_main_screen">Retour à L\'écran Principal</string>
+    <string name="back">Dos</string>
+    <string name="Close_App">Fermer l\'application</string>
+    <string name="Close">Fermer</string>
 </resources>

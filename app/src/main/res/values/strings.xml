@@ -3,4 +3,10 @@
     <string name="submit">Submit</string>
     <string name="picture" translatable="false">picture</string>
     <string name="name" translatable="false">Michael Quon</string>
+    <string name="back_to_main_screen">Back to Main Screen</string>
+    <string name="back">Back</string>
+    <string name="Close_App">Close App</string>
+    <string name="Close">Close</string>
+
+
 </resources>

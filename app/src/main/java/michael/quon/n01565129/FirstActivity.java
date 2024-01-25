@@ -23,8 +23,6 @@ public class FirstActivity extends AppCompatActivity {
         Button submitbtn = findViewById(R.id.submitbtn);
         submitbtn.setOnClickListener(new View.OnClickListener() {
 
-
-
             @Override
             public void onClick(View view) {
                 Toast.makeText(FirstActivity.this, viewText.getText(), Toast.LENGTH_LONG).show();
@@ -39,7 +37,8 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Intercept the back press event and show Snackbar
-        showSnackbar("Close App", new View.OnClickListener() {
+        String CloseApp = getString(R.string.Close_App);
+        showSnackbar(CloseApp, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finishAffinity(); // Close the application
@@ -49,7 +48,8 @@ public class FirstActivity extends AppCompatActivity {
 
     private void showSnackbar(String actionText, View.OnClickListener clickListener) {
         // Display a Snackbar with the specified action
+        String Close = getString(R.string.Close);
         Snackbar.make(findViewById(android.R.id.content), actionText, Snackbar.LENGTH_LONG)
-                .setAction("Close", clickListener).show();
+                .setAction(Close, clickListener).show();
     }
 }
